@@ -4,9 +4,13 @@ FROM --platform=linux/amd64 ubuntu:22.04
 # Install compilers and the libraries we want to vendor
 RUN apt-get update && apt-get install -y \
     build-essential \
+    python3 \
+    python3-dev \
+    python3-pip \
     libsqlite3-dev \
     zlib1g-dev \
-    file
+    file \
+    && python3 -m pip install --no-cache-dir pybind11
 
 # Set up the working directory
 WORKDIR /app
